@@ -1,8 +1,13 @@
 <?php
 
 
-function flash($message)
+function flash($title=null,$message=null)
 {
     $flash = app('App\Http\Flash');
-    return $flash->message($message);
+
+    if(func_num_args()==0){
+        return $flash;
+    }
+
+    return $flash->message($title,$message);
 }

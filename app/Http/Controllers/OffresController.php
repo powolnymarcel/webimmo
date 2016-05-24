@@ -12,6 +12,7 @@ class OffresController extends Controller
 {
     public function index()
     {
+
         $pays=Pays::tout();
 
         return view('offres.creation',[
@@ -22,7 +23,7 @@ class OffresController extends Controller
     {
        Offre::create($request->all());
 
-        flash('Message cree');
+        flash()->success('Succes ! ','Votre offre a été publiée');
 
         return redirect()->back();
     }

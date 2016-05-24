@@ -35,13 +35,6 @@
 </div>
 
 <script src="{{ URL::to('js/libs.js') }}"></script>
-<script>
-    swal({
-        title: "Error!",
-        text: "Here's my error message!",
-        type: "error",
-        confirmButtonText: "Cool"
-    });
-</script>
+@include('flash')
 </body>
 </html>
