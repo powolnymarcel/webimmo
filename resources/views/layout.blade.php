@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>webimmo</title>
+    <link rel="stylesheet" href="{{ URL::to('css/libs.css') }}">
     <link rel="stylesheet" href="{{ URL::to('css/app.css') }}">
 
 </head>
 <body>
+@include('flash')
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
@@ -32,5 +34,14 @@
     @yield('contenu')
 </div>
 
+<script src="{{ URL::to('js/libs.js') }}"></script>
+<script>
+    swal({
+        title: "Error!",
+        text: "Here's my error message!",
+        type: "error",
+        confirmButtonText: "Cool"
+    });
+</script>
 </body>
 </html>

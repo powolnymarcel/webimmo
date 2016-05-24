@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Offre;
 use Illuminate\Http\Request;
 
-use App\Http\Requests;
+use App\Http\Requests\OffreRequest;
 use App\Http\Utiles\Pays;
 
 class OffresController extends Controller
@@ -17,8 +18,12 @@ class OffresController extends Controller
             'pays'=>$pays
         ]);
     }
-    public function creation(Request $request)
+    public function creation(OffreRequest $request)
     {
-    var_dump($request->all());
+       Offre::create($request->all());
+
+        flash('Message cree');
+
+        return redirect()->back();
     }
 }

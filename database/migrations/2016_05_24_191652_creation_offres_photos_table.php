@@ -16,7 +16,7 @@ class CreationOffresPhotosTable extends Migration
             $table->increments('id');
             $table->integer('offre_id')->unsigned();
             $table->foreign('offre_id')->references('id')->on('offres')->onDelete('cascade');
-            $table->string('photo');
+            $table->string('chemin');
             $table->timestamps();
         });
     }

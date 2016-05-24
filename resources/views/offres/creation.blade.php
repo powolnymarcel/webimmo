@@ -5,8 +5,18 @@
 @section('contenu')
 <h1>Vous voulez vendre votre maison ?</h1>
 <hr>
+<div class="row">
+<form action="{{route('offresCreation')}}" method="POST" enctype="multipart/form-data" class="col-md-6">
+    @if(count($errors)>0)
+        <div class="alert alert-danger">
+            <ul>
+                @foreach($errors->all() as $error)
+                    <li>{{$error}}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 
-<form action="{{route('offresCreation')}}" method="POST" enctype="multipart/form-data">
     <div class="form-group">
         <label for="rue">Rue:</label>
         <input type="text" name="rue" id="rue" class="form-control" value="{{old('rue')}}">
@@ -49,16 +59,14 @@
 
 
 
-    <div class="form-group">
-        <label for="photos">Photos:</label>
-        <input type="file" name="photos" id="photos" class="form-control" value="{{old('photos')}}">
-    </div>
-
 
     <div class="form-group">
         <button type="submit" class="btn btn-default">Créer une offre </button>
     </div>
     <input type="hidden" name="_token" value="{{Session::token()}}">
 
+
+
 </form>
+</div>
     @stop
