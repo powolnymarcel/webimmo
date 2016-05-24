@@ -14,3 +14,15 @@
 Route::get('/', function () {
     return view('pages.accueil');
 });
+
+
+
+Route::get('/offres/creation',[
+    'uses'=>'OffresController@index',
+    'as'=>'AfficheroffresCreation'
+]);
+
+Route::post('/offres/creation',[
+    'uses'=>'OffresController@creation',
+    'as'=>'offresCreation'
+]);

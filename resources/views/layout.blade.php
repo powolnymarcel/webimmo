@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>webimmo</title>
-    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="{{ URL::to('css/app.css') }}">
+
 </head>
 <body>
 <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -15,11 +16,11 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">webimmo</a>
+            <a class="navbar-brand" href="http://localhost/projetFlyers/public/">webimmo</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Accueil</a></li>
+                <li class="active"><a href="/">Accueil</a></li>
                 <li><a href="#about">A propos</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>

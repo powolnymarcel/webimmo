@@ -18,4 +18,17 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'password' => bcrypt(str_random(10)),
         'remember_token' => str_random(10),
     ];
+
 });
+
+    $factory->define(App\Offre::class, function (Faker\Generator $faker) {
+        return [
+
+          'rue'           => $faker->streetAddress,
+          'ville'         => $faker->city,
+          'codepostal'    => $faker->postcode,
+          'pays'          => $faker->country,
+          'prix'          => $faker->numberBetween(10000, 5000000),
+          'description'   => $faker->paragraph(3)
+        ];
+    });
