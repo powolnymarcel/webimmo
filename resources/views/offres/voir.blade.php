@@ -13,16 +13,13 @@
             <div class="description">{!! nl2br($offre->description) !!}</div>
         </div>
         <div class="col-md-8 gallery">
-            @foreach ($offre->photos as $set)
-                <img src="{{asset($set->chemin)}}">
-            @endforeach
 
 
         @foreach ($offre->photos->chunk(4) as $set)
                 <div class="row">
                     @foreach ($set as $photo)
-                        <div class="col-md-3 gallery__image">
-                            <img src="/{{ $photo->thumbnail_path }}" alt="">
+                        <div class="col-md-3 gallery_image">
+                            <img src="{{asset($photo->thumbnail_path)}}" alt="">
                         </div>
                     @endforeach
                 </div>

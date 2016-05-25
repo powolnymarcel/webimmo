@@ -16,6 +16,16 @@ Route::get('/', function () {
 });
 
 
+Route::get('login', 'Auth\AuthController@getLogin');
+Route::post('login', 'Auth\AuthController@postLogin');
+Route::get('logout', 'Auth\AuthController@logout');
+
+// Registration routes...
+Route::get('register', 'Auth\AuthController@getRegister');
+Route::post('register', 'Auth\AuthController@postRegister');
+
+
+
 
 Route::get('/offres/creation',[
     'uses'=>'OffresController@index',
@@ -29,3 +39,6 @@ Route::post('/offres/creation',[
 Route::get('/{codepostal}/{rue}', 'OffresController@voir');
 
 Route::post('{codepostal}/{rue}/photos', ['as' => 'ajout_photos', 'uses' => 'OffresController@ajoutPhoto']);
+
+
+

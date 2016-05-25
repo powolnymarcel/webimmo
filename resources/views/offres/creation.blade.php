@@ -5,8 +5,9 @@
 @section('contenu')
 <h1>Vous voulez vendre votre maison ?</h1>
 <hr>
-<div class="row">
-<form action="{{route('offresCreation')}}" method="POST" enctype="multipart/form-data" class="col-md-6">
+<form action="{{route('offresCreation')}}" method="POST" enctype="multipart/form-data" >
+    <div class="row">
+        <div class="col-md-6">
     @if(count($errors)>0)
         <div class="alert alert-danger">
             <ul>
@@ -45,7 +46,8 @@
         </select>
     </div>
 
-    <hr>
+        </div>
+        <div class="col-md-6">
 
 
     <div class="form-group">
@@ -60,15 +62,16 @@
 
 
 
-    <div class="form-group">
-        <button type="submit" class="btn btn-default">Créer une offre </button>
-    </div>
     <input type="hidden" name="_token" value="{{Session::token()}}">
 
 
+        </div>
 
+        <div class="form-group">
+            <button type="submit" class="btn btn-default">Créer une offre </button>
+        </div>
+    </div>
 </form>
-</div>
     @stop
 
 @section('scripts.footer')

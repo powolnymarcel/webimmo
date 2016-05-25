@@ -18,7 +18,7 @@ class Offre extends Model
 
     public static function  LocatedAt($codepostal,$rue){
         $rue= str_replace('-',' ',$rue);
-        return static::where(compact('codepostal','rue'))->first();
+        return static::where(compact('codepostal','rue'))->firstOrFail();
     }
 
     public function ajoutPhoto(Photo $photo){

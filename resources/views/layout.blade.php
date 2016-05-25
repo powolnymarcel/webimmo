@@ -22,7 +22,7 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="/">Accueil</a></li>
+                <li class="active"><a href="http://localhost/projetFlyers/public/">Accueil</a></li>
                 <li><a href="#about">A propos</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>

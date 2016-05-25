@@ -8,9 +8,16 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests\OffreRequest;
 use App\Http\Utiles\Pays;
+use Illuminate\Http\UploadedFile;
 
 class OffresController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth',['except'=>['voir']]);
+    }
+
     public function index()
     {
 
@@ -51,7 +58,7 @@ public function ajoutPhoto($codepostal,$rue,Request $request)
    // $nom = time()  . $fichier->getClientOriginalName();
     //Déplacer la photo dans dossier photos
 
-    $photo= Photo::fromForm($request->file('file'));
+    $photo= $this->fairePhoto($request->file('file'));
 
     //Trouver l'offre
     Offre::LocatedAt($codepostal, $rue)->ajoutPhoto($photo);
@@ -60,11 +67,13 @@ public function ajoutPhoto($codepostal,$rue,Request $request)
    // //Ajouter une photo à l'offre
    // $offre->photos()->create(['chemin'=>"offres/photos/{$nom}"]);
 
-
-
-
-    return 'done';
 }
+
+    protected function fairePhoto(UploadedFile $fichier){
+        return Photo::nommee($fichier->getClientOriginalName())
+            ->deplacer($fichier);
+
+    }
 
 
 
