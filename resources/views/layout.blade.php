@@ -5,7 +5,7 @@
     <title>webimmo</title>
     <link rel="stylesheet" href="{{ URL::to('css/libs.css') }}">
     <link rel="stylesheet" href="{{ URL::to('css/app.css') }}">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/dropzone.css">
 </head>
 <body>
 @include('flash')
@@ -35,6 +35,7 @@
 </div>
 
 <script src="{{ URL::to('js/libs.js') }}"></script>
+@yield('scripts.footer')
 @include('flash')
 </body>
 </html>

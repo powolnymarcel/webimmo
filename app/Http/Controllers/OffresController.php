@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Offre;
+use App\Photo;
 use Illuminate\Http\Request;
 
 use App\Http\Requests\OffreRequest;
@@ -27,4 +28,53 @@ class OffresController extends Controller
 
         return redirect()->back();
     }
+
+
+    public function voir($codepostal, $rue)
+    {
+
+        $offre = Offre::LocatedAt($codepostal, $rue);
+       return view('offres.voir', compact('offre'));
+    }
+
+
+public function ajoutPhoto($codepostal,$rue,Request $request)
+{
+
+  //  $this->validate($request,[
+  //      'photo'=>'mimes:jpg,png,jpeg,bmp',
+  //      'photo'=>required
+  //  ] );
+
+   // $fichier= $request->file('file');
+    //Un nom unique
+   // $nom = time()  . $fichier->getClientOriginalName();
+    //Déplacer la photo dans dossier photos
+
+    $photo= Photo::fromForm($request->file('file'));
+
+    //Trouver l'offre
+    Offre::LocatedAt($codepostal, $rue)->ajoutPhoto($photo);
+
+
+   // //Ajouter une photo à l'offre
+   // $offre->photos()->create(['chemin'=>"offres/photos/{$nom}"]);
+
+
+
+
+    return 'done';
+}
+
+
+
+
+
+
+
+
+
+
+
+
 }

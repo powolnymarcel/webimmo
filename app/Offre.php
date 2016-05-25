@@ -15,6 +15,17 @@ class Offre extends Model
         'codepostal',
         'description'
     ];
+
+    public static function  LocatedAt($codepostal,$rue){
+        $rue= str_replace('-',' ',$rue);
+        return static::where(compact('codepostal','rue'))->first();
+    }
+
+    public function ajoutPhoto(Photo $photo){
+    return $this->photos()->save($photo);
+        
+    }
+
     /**
      * Une offre comporte plusieurs photos
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
@@ -23,4 +34,10 @@ class Offre extends Model
     {
         return $this->hasMany('App\Photo');
     }
+
+    public function getPriceAttributes($prix)
+    {
+        return '€' . number_format($prix);
+    }
+
 }

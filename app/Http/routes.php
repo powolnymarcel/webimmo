@@ -26,3 +26,6 @@ Route::post('/offres/creation',[
     'uses'=>'OffresController@creation',
     'as'=>'offresCreation'
 ]);
+Route::get('/{codepostal}/{rue}', 'OffresController@voir');
+
+Route::post('{codepostal}/{rue}/photos', ['as' => 'ajout_photos', 'uses' => 'OffresController@ajoutPhoto']);
