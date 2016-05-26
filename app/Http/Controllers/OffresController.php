@@ -15,7 +15,22 @@ class OffresController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth',['except'=>['voir']]);
+        $this->middleware('auth',['except'=>['voir','accueil','accueil2']]);
+
+        parent::__construct();
+    }
+
+    public function accueil2(){
+        $offres=Offre::all();
+        return response()->json($offres);
+
+    }
+
+    public function accueil(){
+        $offres=Offre::all();
+        return view('pages.accueil',[
+            'offres'=>$offres
+        ]);
     }
 
     public function index()
@@ -29,11 +44,21 @@ class OffresController extends Controller
     }
     public function creation(OffreRequest $request)
     {
-       Offre::create($request->all());
+        $input = $request->all();
+        //dd($request->all());
+        $codepostal =$input['codepostal'];
+        $rue        =$input['rue'];
+
+        Offre::create($request->all());
 
         flash()->success('Succes ! ','Votre offre a été publiée');
+sleep(1);
 
-        return redirect()->back();
+
+        return redirect(route('voirOffre',['codepostal'=>$codepostal,'rue'=>$rue]));
+
+
+        //return redirect()->back();
     }
 
 

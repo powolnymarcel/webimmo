@@ -6,7 +6,7 @@
             <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
 
                 <h1>Connexion</h1>
-
+<h2>Pas encore de compte ? <a href="{{route('register')}}">Creez en un ici</a></h2>
                 @include('partials._form-errors')
 
                 <form role="form" method="POST" action="{{ url('/login') }}">

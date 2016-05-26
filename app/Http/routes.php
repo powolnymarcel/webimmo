@@ -11,19 +11,28 @@
 |
 */
 
-Route::get('/', function () {
-    return view('pages.accueil');
-});
+
+Route::get('/',[
+    'uses'=>'OffresController@accueil',
+    'as'=>'Affichageroffres'
+]);
 
 
-Route::get('login', 'Auth\AuthController@getLogin');
+Route::get('/login',[
+    'uses'=>'Auth\AuthController@getLogin',
+    'as'=>'login'
+]);
+
 Route::post('login', 'Auth\AuthController@postLogin');
 Route::get('logout', 'Auth\AuthController@logout');
 
 // Registration routes...
-Route::get('register', 'Auth\AuthController@getRegister');
 Route::post('register', 'Auth\AuthController@postRegister');
 
+Route::get('/register',[
+    'uses'=>'Auth\AuthController@getRegister',
+    'as'=>'register'
+]);
 
 
 
@@ -36,9 +45,15 @@ Route::post('/offres/creation',[
     'uses'=>'OffresController@creation',
     'as'=>'offresCreation'
 ]);
-Route::get('/{codepostal}/{rue}', 'OffresController@voir');
+Route::get('/{codepostal}/{rue}',[
+    'uses'=>'OffresController@voir',
+    'as'=>'voirOffre'
+]);
 
 Route::post('{codepostal}/{rue}/photos', ['as' => 'ajout_photos', 'uses' => 'OffresController@ajoutPhoto']);
 
-
+Route::get('/responsejson',[
+    'uses'=>'OffresController@accueil2',
+    'as'=>'Affichageroffresjson'
+]);
 
