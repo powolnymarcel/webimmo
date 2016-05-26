@@ -40,4 +40,12 @@ class Offre extends Model
         return '€' . number_format($prix);
     }
 
+    public function proprietaire(){
+        return $this->belongsTo('App\User','utilisateur_id');
+    }
+
+    public function proprieteDe(User $utilisateur){
+        return $this->utilisateur_id == $utilisateur->id;
+    }
+
 }

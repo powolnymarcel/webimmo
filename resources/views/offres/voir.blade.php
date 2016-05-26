@@ -24,17 +24,16 @@
                     @endforeach
                 </div>
             @endforeach
-
-
-
+            <hr>
+            @if($utilisateur && $utilisateur->proprietaireOffre($offre))
+            <form action="{{route('ajout_photos',['codepostal'=>$offre->codepostal,'rue'=>$offre->rue])}}" method="post" class="dropzone">
+                {{csrf_field()}}
+            </form>
+            @endif
         </div>
     </div>
-        <hr>
-        <h2>Ajouter vos photos</h2>
 
-    <form action="{{route('ajout_photos',['codepostal'=>$offre->codepostal,'rue'=>$offre->rue])}}" method="post" class="dropzone">
-        {{csrf_field()}}
-    </form>
+
 @stop
 
 @section('scripts.footer')

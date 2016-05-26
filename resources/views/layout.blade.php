@@ -29,9 +29,14 @@
             @if($estConnecte)
                 <p class="navbar-text navbar-right">
                     Salut, {{$utilisateur->name}}
+                    <a href="{{route('logout')}}">Deconnexion</a>
                 </p>
                 @endif
-
+            @if(!$estConnecte)
+                <p class="navbar-text navbar-right">
+                    <a href="{{route('login')}}">Connexion</a>
+                </p>
+            @endif
         </div><!--/.nav-collapse -->
     </div>
 </nav>

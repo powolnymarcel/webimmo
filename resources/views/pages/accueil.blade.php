@@ -11,6 +11,7 @@
 </div>
 <div class="container">
     <div class="row">
+        @if($offres->count() > 0)
         <div class="col-md-6">
             <h2>Total : {{$offres->count()}}</h2>
                 <table class="table table-inverse">
@@ -49,10 +50,12 @@
                 </table>
 
             <a href="{{route('Affichageroffresjson')}}" class="btn btn-block btn-primary">Export JSON ICI</a>
-
-
-
         </div>
+            @endif
+            @if($offres->count() <= 0)
+                Aucunes offre...
+            @endif
+
     </div>
 </div>
 

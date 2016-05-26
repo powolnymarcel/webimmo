@@ -83,9 +83,23 @@ public function ajoutPhoto($codepostal,$rue,Request $request)
    // $nom = time()  . $fichier->getClientOriginalName();
     //Déplacer la photo dans dossier photos
 
-    $photo= $this->fairePhoto($request->file('file'));
 
+ //On verifie que l'user a bien crée le post
+//    if($offre->utilisateur_id !== \Auth::id()){
+   // if($offre->proprieteDe(\Auth::user())){
+//    if(!$offre->proprieteDe($this->utilisateur)){
+        if(!$this->offreCreeParUtilisateur($request)){
+
+      // if($request->ajax()){
+      //     return response(['message'=>'Hors de question !!'],403);
+      // }
+      // flash('Hors de question');
+      // redirect('/');
+      return  $this->interdiction($request);
+    }
+    $photo= $this->fairePhoto($request->file('file'));
     //Trouver l'offre
+    //Offre::LocatedAt($codepostal, $rue)->ajoutPhoto($photo);
     Offre::LocatedAt($codepostal, $rue)->ajoutPhoto($photo);
 
 
@@ -100,7 +114,22 @@ public function ajoutPhoto($codepostal,$rue,Request $request)
 
     }
 
+    public function offreCreeParUtilisateur(Request $request){
+//Si une offre a ete cree par l'user en cours
+        return Offre::where([
+           'codepostal'=>$request->codepostal,
+            'rue'=>$request->rue,
+            'utilisateur_id'=>$this->utilisateur->id
+        ])->exists();
+    }
 
+public function interdiction(Request $request){
+    if($request->ajax()){
+        return response(['message'=>'Hors de question !!'],403);
+    }
+    flash('Hors de question');
+    redirect('/');
+}
 
 
 

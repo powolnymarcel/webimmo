@@ -14,6 +14,7 @@ class CreationOffresTable extends Migration
     {
         Schema::create('offres', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('utilisateur_id')->unsigned();
             $table->string('rue');
             $table->string('ville',40);
             $table->string('codepostal',10);

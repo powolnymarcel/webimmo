@@ -13,10 +13,12 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, AuthorizesResources, DispatchesJobs, ValidatesRequests;
 
+    protected $utilisateur;
 
     public function __construct()
     {
+        $this->utilisateur=Auth::user();
         view()->share('estConnecte',Auth::check());
-        view()->share('utilisateur',Auth::user());
+        view()->share('utilisateur',$this->utilisateur);
     }
 }
