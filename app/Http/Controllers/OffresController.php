@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Offre;
 use App\Photo;
+use App\User;
 use Illuminate\Http\Request;
 
 use App\Http\Requests\OffreRequest;
@@ -48,25 +49,19 @@ class OffresController extends Controller
         //dd($request->all());
         $codepostal =$input['codepostal'];
         $rue        =$input['rue'];
-
         Offre::create($request->all());
-
+        //$this->utilisateur->publier(new Offre($request->all()));
         flash()->success('Succes ! ','Votre offre a été publiée');
-sleep(1);
-
-
+        sleep(1);
         return redirect(route('voirOffre',['codepostal'=>$codepostal,'rue'=>$rue]));
-
-
         //return redirect()->back();
     }
 
 
     public function voir($codepostal, $rue)
     {
-
         $offre = Offre::LocatedAt($codepostal, $rue);
-       return view('offres.voir', compact('offre'));
+        return view('offres.voir', compact('offre'));
     }
 
 

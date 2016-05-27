@@ -19,7 +19,9 @@
                 <div class="row">
                     @foreach ($set as $photo)
                         <div class="col-md-3 gallery_image">
+                            <a href="{{asset($photo->chemin)}}" data-lity>
                             <img src="{{asset($photo->thumbnail_path)}}" alt="">
+                            </a>
                         </div>
                     @endforeach
                 </div>

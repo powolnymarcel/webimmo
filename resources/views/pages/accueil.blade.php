@@ -5,9 +5,14 @@
 <div class="jumbotron">
     <h1>Web immo !</h1>
     <p>This is a template showcasing the optional theme stylesheet included in Bootstrap. Use it as a starting point to create something more unique by building on or modifying it.</p>
-
+@if($estConnecte)
     <a href="{{route('AfficheroffresCreation')}}"><button class="btn btn-primary"> Créez une offre !</button>
     </a>
+@else
+        <a href="{{route('register')}}"><button class="btn btn-primary"> Creez un compte pour faire une offre</button>    </a>
+
+    @endif
+
 </div>
 <div class="container">
     <div class="row">

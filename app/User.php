@@ -27,4 +27,31 @@ class User extends Authenticatable
     public function proprietaireOffre($relationUtilisateurAvecOffre){
     return $relationUtilisateurAvecOffre->utilisateur_id == $this->id;
     }
+
+public function offres(){
+   return  $this->hasMany(Offre::class);
+}
+
+public function publier(Offre $offre){
+ $this->offres()->save($offre);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
