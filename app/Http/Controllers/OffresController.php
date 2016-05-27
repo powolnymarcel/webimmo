@@ -131,8 +131,11 @@ public function interdiction(Request $request){
 
 
 
+    public function detruire($id){
 
+        Photo::findOrFail($id)->delete();
+        return back();
 
-
+    }
 
 }

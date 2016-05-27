@@ -44,6 +44,17 @@ public static function nommee($nom){
         Image::make($this->chemin)
             ->fit(200)
             ->save($this->thumbnail_path);
+    }
+
+
+    public function supprimer(){
+\File::delete([
+    $this->chemin,
+    $this->thumbnail_path
+]);
+        parent::delete();
+
+
 
     }
 }

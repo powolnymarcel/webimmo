@@ -59,3 +59,8 @@ Route::get('/responsejson',[
     'as'=>'Affichageroffresjson'
 ]);
 
+    
+    Route::delete('photos/{id?}',[
+        'uses'=>'OffresController@detruire',
+        'as'=>'detruire'
+    ]);

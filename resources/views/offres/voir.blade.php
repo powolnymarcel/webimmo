@@ -19,6 +19,11 @@
                 <div class="row">
                     @foreach ($set as $photo)
                         <div class="col-md-3 gallery_image">
+                            <form action="{{route('detruire',['id'=>$photo->id])}}" method="post">
+                                <input type="hidden" name="_method" value="delete">
+                                {{csrf_field()}}
+                                <button type="submit">X</button>
+                            </form>
                             <a href="{{asset($photo->chemin)}}" data-lity>
                             <img src="{{asset($photo->thumbnail_path)}}" alt="">
                             </a>
